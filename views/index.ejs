@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title> ToDo App </title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100"     rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2> A Simple ToDo List App </h2>
+    <!-- form is submitting a post request to the /addtask route -->
+    <form action ="/addtask" method="POST">
+        <input type="text" name="newtask" placeholder="add new task"><button> Add Task </button>
+
+        <h2> Added Task </h2>
+        <!-- adding a loop to our index.ejs to display a list of all the newtask added by the user -->
+        <% for (var i = 0; i < task.length; i++) { %>
+            <li><input type="checkbox" name="check" value="<%= task[i] %>"/><%= task[i] %></li>
+        <% } %>
+
+        <h2> Completed task </h2>
+        <% for(var i = 0; i < complete.length; i++) { %>
+            <li><input type="checkbox" checked /><%= complete[i] %> </li>
+        <% } %>
+        <br>
+        <button formaction="/removetask" type="submit"> Remove </button>
+    </form>
+
+</div>
+</body>
+</html>
